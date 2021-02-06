@@ -46,6 +46,8 @@ good reason to use non-stable dependency.
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata))
 * Tests
     * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
+    
+    
 
 ## Getting started
 
@@ -63,6 +65,10 @@ There are a few ways to open this project.
 2. Go to `Android Studio` -> `File` -> `Open` and select cloned directory
 3. Provide `productionApiBaseUrl="<value goes here>"` in the `gradle.properties` for Release
 3. Provide `dev.api.base.url="<value goes here>"` in the `local.properties` for Debug
+
+What you should see when you compile and run the project:
+
+<img src="https://drive.google.com/file/d/1GiJIZbOgngr2Udi0Vorf75DfqnkGRCEZ/view?usp=sharing" width="300" height="650">
 
 ## Inspiration
 
