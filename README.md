@@ -57,14 +57,15 @@ There are a few ways to open this project.
 
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
 2. Enter `https://github.com/emmag13/CardInfoFinder.git` into URL field
-3. Provide `APP_ID="<value goes here>"` in the `gradle.properties`
+3. Provide `productionApiBaseUrl="<value goes here>"` in the `gradle.properties` for Release
+4. Provide `dev.api.base.url="<value goes here>"` in the `local.properties` for Debug
 
 ### Command-line + Android Studio
 
 1. Run `git clone https://github.com/emmag13/CardInfoFinder.git` to clone project
 2. Go to `Android Studio` -> `File` -> `Open` and select cloned directory
 3. Provide `productionApiBaseUrl="<value goes here>"` in the `gradle.properties` for Release
-3. Provide `dev.api.base.url="<value goes here>"` in the `local.properties` for Debug
+4. Provide `dev.api.base.url="<value goes here>"` in the `local.properties` for Debug
 
 #### App Screenshots
 
@@ -82,9 +83,3 @@ There are a few ways to open this project.
      <td><img src="screenshots/screenD.png" width=270 height=480></td>
   </tr>
  </table>
-
-## Inspiration
-
-This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
-additional resources.
-
