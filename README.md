@@ -11,18 +11,20 @@ A simple card info finder project that presents a modern, 2020 approach to
 The goal of the project is to demonstrate best practices by using up to date tech-stack and presenting modern Android application
 [Architecture](#architecture) that is monolithic, scalable, maintainable, and testable.
 
-This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
-
 ## Project characteristics
 
 This project brings to table set of best practices, tools, and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
-* Modern architecture (Model-View-ViewModel, Model-View-Intent)
+* Modern architecture (Model-View-ViewModel)
 * [Android Jetpack](https://developer.android.com/jetpack)
-* Reactive UI
 * Testing (Unit, UI)
+* OCR Scanner
 * Material design
+
+The application project is made of two (2) modules. They are:
+* `app`
+* `restapi`
 
 ## Tech-stack
 Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so the presented approach is suitable for over
@@ -32,27 +34,18 @@ good reason to use non-stable dependency.
 
 * Tech-stack
     * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) + [Flow](https://developer.android.com/kotlin/flow) - perform background operations
-    * [OkHttp](https://square.github.io/okhttp/) - networking. Known to be lighter than Retrofit.
+    * [Retrofit](https://github.com/square/retrofit) - networking.
     * [Jetpack](https://developer.android.com/jetpack)
         * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
         * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when lifecycle state changes
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
-  *   [Glide](https://github.com/bumptech/glide) - image loading library with better memory management for pretty large list
+  *   [Picasso](https://github.com/square/picasso) - image loading library with memory management
 * Architecture
     * Clean Architecture (at module level)
-    * MVVM + MVI (presentation layer)
+    * MVVM in MainActivity.kt
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata))
 * Tests
     * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
-
-### Design decisions
-
-Read related articles to have a better understanding of underlying design decisions and various trade-offs.
-
-## What this project does not cover?
-
-The interface of the app utilizes some of the modern material design components, however, is deliberately kept simple to
-focus on application architecture.
 
 ## Getting started
 
@@ -68,14 +61,11 @@ There are a few ways to open this project.
 
 1. Run `git clone https://github.com/emmag13/CardInfoFinder.git` to clone project
 2. Go to `Android Studio` -> `File` -> `Open` and select cloned directory
-3. Provide `APP_ID="<value goes here>"` in the `gradle.properties`
+3. Provide `productionApiBaseUrl="<value goes here>"` in the `gradle.properties` for Release
+3. Provide `dev.api.base.url="<value goes here>"` in the `local.properties` for Debug
 
 ## Inspiration
 
 This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
 additional resources.
-
-## Contribute
-
-Want to contribute? Check our [Contributing](CONTRIBUTING.md) docs.
 
