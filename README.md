@@ -66,9 +66,21 @@ There are a few ways to open this project.
 3. Provide `productionApiBaseUrl="<value goes here>"` in the `gradle.properties` for Release
 3. Provide `dev.api.base.url="<value goes here>"` in the `local.properties` for Debug
 
-What you should see when you compile and run the project:
+#### App Screenshots
 
-<img src="https://drive.google.com/file/d/1GiJIZbOgngr2Udi0Vorf75DfqnkGRCEZ/view?usp=sharing" width="300" height="650">
+<table>
+  <tr>
+    <td>First Screen Page</td>
+     <td>Holiday Mention</td>
+     <td>Present day in purple and selected day in pink</td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/screenA.png" width=270 height=480></td>
+    <td><img src="screenshots/screenB.png" width=270 height=480></td>
+    <td><img src="screenshots/screenC.png" width=270 height=480></td>
+     <td><img src="screenshots/screenD.png" width=270 height=480></td>
+  </tr>
+ </table>
 
 ## Inspiration
 
