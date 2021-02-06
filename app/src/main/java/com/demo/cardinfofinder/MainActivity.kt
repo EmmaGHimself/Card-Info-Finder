@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.WindowManager.BadTokenException
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -34,11 +35,11 @@ import com.demo.cardinfofinder.utils.*
 import com.demo.restapi.CardInfoFinderCloud
 import com.demo.restapi.models.CardInfoDetails
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -71,7 +72,9 @@ class MainActivity : AppCompatActivity() {
                 if (charSequence.toString().trim { it <= ' ' }.isEmpty()) {
                     cardNumber!!.text = "**** **** **** ****"
                 } else {
-                    val number = Tools.insertPeriodically(charSequence.toString().trim { it <= ' ' }, " ", 4)
+                    val number = Tools.insertPeriodically(
+                        charSequence.toString().trim { it <= ' ' }, " ", 4
+                    )
                     cardNumber!!.text = number
                 }
             }
@@ -109,15 +112,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 LOADING -> {
                     //determines the UI state when the app is loading data
-                    progressDialog = ProgressDialog(this@MainActivity)
-                    val ss = SpannableString("Processing...")
-                    val typeFace = ResourcesCompat.getFont(applicationContext, R.font.muli_medium)
-                    ss.setSpan(RelativeSizeSpan(1.0f), 0, ss.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    ss.setSpan(typeFace?.let { CustomTypefaceSpan("", it) }, 0, ss.length, 0)
-
-                    progressDialog!!.setMessage(ss)
-                    progressDialog!!.setCancelable(false)
-                    progressDialog!!.show()
+                    main?.visibility = GONE
+                    progress?.visibility = VISIBLE
                 }
                 DATA_FOUND -> {
                     //determines the UI state when the app has found data
@@ -127,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                     val cardCurrency = customLayout?.findViewById<TextView>(R.id.currency)
                     val card = customLayout?.findViewById<TextView>(R.id.cardType)
                     val bankUrl = customLayout?.findViewById<TextView>(R.id.bank_url)
+                    val country = customLayout?.findViewById<TextView>(R.id.country)
 
 
                     if (cardInfoDetails != null) {
@@ -180,19 +177,36 @@ class MainActivity : AppCompatActivity() {
                             cardCurrency?.setText(R.string.not_available)
                         }
 
+                        if (cardInfoDetails!!.country?.name != null) {
+                            val country_name: String? = cardInfoDetails!!.country?.name
+                            if (country != null) {
+                                country.text = country_name
+                            }
+                        } else {
+                            cardCurrency?.setText(R.string.not_available)
+                        }
+
                         if (cardInfoDetails!!.scheme == ("visa")) {
-                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(R.drawable.ic_visa)
+                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(
+                                R.drawable.ic_visa
+                            )
                         }
                         if (cardInfoDetails!!.scheme == ("mastercard")) {
-                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(R.drawable.ic_mastercard)
+                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(
+                                R.drawable.ic_mastercard
+                            )
                         }
 
                         if (cardInfoDetails!!.scheme == ("discover")) {
-                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(R.drawable.ic_discover)
+                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(
+                                R.drawable.ic_discover
+                            )
                         }
 
                         if (cardInfoDetails!!.scheme == ("amex")) {
-                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(R.drawable.ic_amex)
+                            customLayout?.findViewById<ImageView>(R.id.card_logo)?.setImageResource(
+                                R.drawable.ic_amex
+                            )
                         }
 
                         etCardNumber?.text?.clear()
@@ -214,6 +228,7 @@ class MainActivity : AppCompatActivity() {
 
                     (dialog.findViewById<View>(R.id.bt_close) as AppCompatButton).setOnClickListener {
                         dialog.dismiss()
+                        main?.visibility = VISIBLE
                         etCardNumber?.text?.clear()
                     }
 
@@ -264,46 +279,69 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadCardDetail(k: String) {
         etCardNumber?.hideKeyboard()
+        main?.visibility = GONE
+        progress?.visibility = VISIBLE
 
-        uiStateViewModel?.setUIState(LOADING)
-
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this@MainActivity).create()
 
         customLayout = layoutInflater.inflate(R.layout.dialog_card_info, null)
         builder.setView(customLayout)
+        builder.setCancelable(false)
+        builder.setCanceledOnTouchOutside(false)
+        builder.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        builder.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        CardInfoFinderCloud.getInstance(applicationContext)?.getCardInfoDetails(k, object : Callback<CardInfoDetails?> {
-            override fun onResponse(call: Call<CardInfoDetails?>, response: Response<CardInfoDetails?>) {
-                if (response.code() == 200) {
-                    progressDialog?.dismiss()
-                    cardInfoDetails = response.body()
+        CardInfoFinderCloud.getInstance(applicationContext)?.getCardInfoDetails(
+            k,
+            object : Callback<CardInfoDetails?> {
+                override fun onResponse(
+                    call: Call<CardInfoDetails?>,
+                    response: Response<CardInfoDetails?>
+                ) {
+                    if (response.code() == 200) {
+                        main?.visibility = VISIBLE
+                        progress?.visibility = GONE
+                        cardInfoDetails = response.body()
 
-                    val dialog = builder.create()
-                    dialog.setCancelable(false)
-                    dialog.setCanceledOnTouchOutside(false)
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                    dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-                    dialog.show()
-                    uiStateViewModel?.setUIState(DATA_FOUND)
-                    customLayout?.findViewById<FloatingActionButton>(R.id.fab)?.setOnClickListener {
-                        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-                        dialog.dismiss()
+                        try {
+                            builder.show()
+                        } catch (ex: BadTokenException) {
+                            ex.printStackTrace()
+                        }
 
+
+                        uiStateViewModel?.setUIState(DATA_FOUND)
+                        customLayout?.findViewById<FloatingActionButton>(R.id.fab)
+                            ?.setOnClickListener {
+                                overridePendingTransition(
+                                    android.R.anim.slide_in_left,
+                                    android.R.anim.slide_out_right
+                                )
+                                try {
+                                    builder.dismiss()
+                                } catch (ex: BadTokenException) {
+                                    ex.printStackTrace()
+                                }
+
+                            }
+                    } else {
+                        progress?.visibility = GONE
+                        uiStateViewModel?.setUIState(NO_DATA)
                     }
-                } else {
-                    progressDialog?.dismiss()
-                    uiStateViewModel?.setUIState(NO_DATA)
                 }
-            }
 
-            override fun onFailure(call: Call<CardInfoDetails?>, t: Throwable) {
-                t.printStackTrace()
-                progressDialog?.dismiss()
-                etCardNumber?.text?.clear()
-                Toast.makeText(this@MainActivity, "Network Connection Error!", Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onFailure(call: Call<CardInfoDetails?>, t: Throwable) {
+                    t.printStackTrace()
+                    progress?.visibility = GONE
+                    etCardNumber?.text?.clear()
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Network Connection Error!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
     }
 
     fun buttonStart(view: View?) {

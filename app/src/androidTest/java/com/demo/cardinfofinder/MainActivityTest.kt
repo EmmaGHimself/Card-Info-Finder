@@ -18,7 +18,7 @@ import org.junit.runner.RunWith
 
 class MainActivityTest {
 
-     lateinit var ToBetyped: String
+    lateinit var ToBetyped: String
 
     @get:Rule
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
@@ -32,9 +32,10 @@ class MainActivityTest {
     @Test
     fun checkChangeEditTextWithCardText() {
         // Edit text for .
-       onView(withId(R.id.etCardNumber)).perform(typeText(ToBetyped), closeSoftKeyboard())
+        onView(withId(R.id.etCardNumber))
+            .perform(typeText(ToBetyped), closeSoftKeyboard())
 
         onView(withId(R.id.cardNumber))
-                .check(matches(withText(ToBetyped)))
+            .check(matches(withText(ToBetyped)))
     }
 }

@@ -1,286 +1,346 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/title"
+
+    <RelativeLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/muli_bold"
-        android:gravity="center_horizontal"
-        android:text="@string/get_card_info"
-        android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="25sp" />
+        android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:gravity="end|right"
-        android:orientation="horizontal">
-
-        <androidx.cardview.widget.CardView
+        <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:visibility="visible"
-            app:cardBackgroundColor="@color/blue"
-            app:cardCornerRadius="6dp"
-            app:cardElevation="3dp">
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/muli_bold"
+            android:gravity="center_horizontal"
+            android:text="@string/get_card_info"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="25sp" />
 
-            <RelativeLayout
+
+        <LinearLayout
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:gravity="end|right"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="3dp">
 
-                <ImageView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/world_map" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/cardProviderLogo"
-                        android:layout_width="50dp"
-                        android:layout_height="26dp"
-                        android:layout_gravity="end|right"
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
                         android:scaleType="centerCrop"
-                        android:visibility="gone"
-                        app:srcCompat="@drawable/ic_visa" />
-
-                    <TextView
-                        android:id="@+id/cardNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:fontFamily="@font/muli_regular"
-                        android:text="@string/card_number"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-                        android:textColor="@android:color/white" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="20dp" />
+                        android:src="@drawable/world_map" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <ImageView
+                            android:id="@+id/cardProviderLogo"
+                            android:layout_width="50dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="end|right"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone"
+                            app:srcCompat="@drawable/ic_visa" />
+
+                        <TextView
+                            android:id="@+id/cardNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/card_number"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                            android:textColor="@android:color/white" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="20dp" />
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
                             <LinearLayout
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                                    android:orientation="horizontal">
 
-                                    <TextView
+                                    <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
-                                        android:text="@string/expire"
-                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                                        android:textColor="@color/grey_10" />
+                                        android:orientation="vertical">
 
-                                    <TextView
-                                        android:id="@+id/card_expire"
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/muli_regular"
+                                            android:text="@string/expire"
+                                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                            android:textColor="@color/grey_10" />
+
+                                        <TextView
+                                            android:id="@+id/card_expire"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/muli_regular"
+                                            android:text="@string/mm_yy"
+                                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                            android:textColor="@android:color/white" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="35dp"
+                                        android:layout_height="0dp" />
+
+                                    <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
-                                        android:text="@string/mm_yy"
-                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                                        android:textColor="@android:color/white" />
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/cvv"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/muli_regular"
+                                            android:text="@string/cvv"
+                                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                            android:textColor="@color/grey_10" />
+
+                                        <TextView
+                                            android:id="@+id/card_cvv"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/muli_regular"
+                                            android:text="@string/cvv_number"
+                                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                            android:textColor="@android:color/white" />
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
                                 <View
-                                    android:layout_width="35dp"
-                                    android:layout_height="0dp" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="15dp" />
 
-                                <LinearLayout
+                                <TextView
+                                    android:id="@+id/card_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/cvv"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
-                                        android:text="@string/cvv"
-                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                                        android:textColor="@color/grey_10" />
-
-                                    <TextView
-                                        android:id="@+id/card_cvv"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
-                                        android:text="@string/cvv_number"
-                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                                        android:textColor="@android:color/white" />
-                                </LinearLayout>
+                                    android:fontFamily="@font/muli_regular"
+                                    android:text="@string/your_name"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                    android:textColor="@android:color/white" />
 
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="15dp" />
-
-                            <TextView
-                                android:id="@+id/card_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_regular"
-                                android:text="@string/your_name"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                android:textColor="@android:color/white" />
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="bottom"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_copper_card" />
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_gravity="bottom"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_copper_card" />
-
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="5dp" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="5dp" />
-                </LinearLayout>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/muli_medium"
+            android:gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="@string/details"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/info"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/cardNumberIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/ic_credit_card__1_"
+                    app:tint="#B4000F65" />
+
+                <EditText
+                    android:id="@+id/etCardNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/cardNumberIcon"
+                    android:autofillHints="@string/enter_card_number"
+                    android:background="@null"
+                    android:digits="01234 56789"
+                    android:fontFamily="@font/muli_regular"
+                    android:hint="@string/enter_card_number"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="19"
+                    android:padding="14dp"
+                    android:textColor="@color/blue"
+                    android:textColorHint="#3E000F65"
+                    android:textSize="16sp" />
+
 
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/card"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/muli_medium"
-        android:gravity="center_horizontal"
-        android:padding="15dp"
-        android:text="@string/details"
-        android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="18sp" />
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/info"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        app:cardCornerRadius="7dp"
-        app:cardElevation="1dp"
-        app:cardPreventCornerOverlap="true">
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/cardNumberIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:padding="10dp"
-                app:srcCompat="@drawable/ic_credit_card__1_"
-                app:tint="#B4000F65" />
-
-            <EditText
-                android:id="@+id/etCardNumber"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/cardNumberIcon"
-                android:layout_toRightOf="@id/cardNumberIcon"
-                android:background="@null"
-                android:digits="01234 56789"
-                android:fontFamily="@font/muli_regular"
-                android:hint="@string/enter_card_number"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:maxLength="19"
-                android:padding="14dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/muli_medium"
+                android:gravity="center_horizontal"
+                android:text="@string/scan_your_card"
+                android:textAlignment="center"
                 android:textColor="@color/blue"
-                android:textColorHint="#3E000F65"
-                android:textSize="16sp"
-                android:autofillHints="@string/enter_card_number" />
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/scanCard"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:onClick="buttonStart"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_qr_code_scan"
+                app:tint="#4B000F65" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/progress"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal|center"
+        android:visibility="gone"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
 
 
-        </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/cp_pbar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/cp_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/muli_regular"
+                android:text="@string/processing"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/muli_medium"
-            android:gravity="center_horizontal"
-            android:text="@string/scan_your_card"
-            android:textAlignment="center"
-            android:textColor="@color/blue"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/scanCard"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:onClick="buttonStart"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_qr_code_scan"
-            app:tint="#4B000F65" />
-    </LinearLayout>
-
-</RelativeLayout>
+</FrameLayout>
