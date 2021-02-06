@@ -70,9 +70,10 @@ There are a few ways to open this project.
 
 <table>
   <tr>
-    <td>First Screen Page</td>
-     <td>Holiday Mention</td>
-     <td>Present day in purple and selected day in pink</td>
+    <td>Splash Screen</td>
+     <td>Main Application</td>
+     <td>Processed Card Details</td>
+     <td>Error Processing Card Details</td>
   </tr>
   <tr>
     <td><img src="screenshots/screenA.png" width=270 height=480></td>
