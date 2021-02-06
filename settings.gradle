@@ -1,0 +1,3 @@
+include ':restapi'
+include ':app'
+rootProject.name = "CardInfoFinder"

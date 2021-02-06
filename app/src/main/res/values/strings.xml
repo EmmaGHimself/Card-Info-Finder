@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CardInfoFinder</string>
+    <string name="appName">Card Info Finder</string>
+
+    <string name="details">Enter the first 6 digits of your debit/credit card or Scan your credit card number</string>
+    <string name="get_card_info">Get Card Info</string>
+    <string name="card_number">**** **** **** ****</string>
+    <string name="expire">EXPIRE</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <string name="cvv_number">***</string>
+    <string name="your_name">Your Name</string>
+    <string name="enter_card_number">Enter Card Number</string>
+    <string name="scan_your_card">Scan Your Card</string>
+    <string name="not_available">Not Available</string>
+
+    <string name="processing">Processing</string>
+</resources>
