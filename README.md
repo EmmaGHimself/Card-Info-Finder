@@ -61,12 +61,12 @@ There are a few ways to open this project.
 ### Android Studio
 
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
-2. Enter `https://github.com/SunnyBe/ListDetail.git` into URL field
+2. Enter `https://github.com/emmag13/CardInfoFinder.git` into URL field
 3. Provide `APP_ID="<value goes here>"` in the `gradle.properties`
 
 ### Command-line + Android Studio
 
-1. Run `git clone https://github.com/SunnyBe/ListDetail.git` to clone project
+1. Run `git clone https://github.com/emmag13/CardInfoFinder.git` to clone project
 2. Go to `Android Studio` -> `File` -> `Open` and select cloned directory
 3. Provide `APP_ID="<value goes here>"` in the `gradle.properties`
 
